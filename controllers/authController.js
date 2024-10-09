@@ -30,7 +30,7 @@ exports.login = async (req, res) => {
       { userId: user._id, role: user.role },
       process.env.JWT_SECRET
     )
-    res.json({ token })
+    res.json({ token, user: { userId: user._id, role: user.role } })
   } catch (error) {
     res.status(500).json({ message: 'Error logging in' })
   }
