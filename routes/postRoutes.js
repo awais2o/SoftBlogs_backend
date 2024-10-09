@@ -16,3 +16,4 @@ router.put('/:id', auth('admin'), updatePost)
 router.delete('/:id', auth('admin'), deletePost)
 
 module.exports = router
+//
