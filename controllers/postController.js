@@ -18,17 +18,17 @@ exports.getPosts = async (req, res) => {
       posts
     })
   } catch (error) {
-    res.status(500).json({ error: 'Error retrieving posts' })
+    res.status(500).json({ message: 'Error retrieving posts' })
   }
 }
 
 exports.getPostById = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
-    if (!post) return res.status(404).json({ error: 'Post not found' })
+    if (!post) return res.status(404).json({ message: 'Post not found' })
     res.json(post)
   } catch (error) {
-    res.status(500).json({ error: 'Error retrieving post' })
+    res.status(500).json({ message: 'Error retrieving post' })
   }
 }
 
@@ -41,7 +41,7 @@ exports.createPost = async (req, res) => {
     await post.save()
     res.status(201).json(post)
   } catch (error) {
-    res.status(500).json({ error: 'Error creating post' })
+    res.status(500).json({ message: 'Error creating post' })
   }
 }
 
@@ -54,10 +54,10 @@ exports.updatePost = async (req, res) => {
       { title, content },
       { new: true }
     )
-    if (!post) return res.status(404).json({ error: 'Post not found' })
+    if (!post) return res.status(404).json({ message: 'Post not found' })
     res.json(post)
   } catch (error) {
-    res.status(500).json({ error: 'Error updating post' })
+    res.status(500).json({ message: 'Error updating post' })
   }
 }
 
@@ -67,6 +67,6 @@ exports.deletePost = async (req, res) => {
     if (!post) return res.status(404).json({ error: 'Post not found' })
     res.json({ message: 'Post deleted successfully' })
   } catch (error) {
-    res.status(500).json({ error: 'Error deleting post' })
+    res.status(500).json({ message: 'Error deleting post' })
   }
 }
